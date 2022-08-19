@@ -77,8 +77,8 @@ tokenizer = BertTokenizer.from_pretrained('prajjwal1/bert-tiny')
 tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
 train, val, test = tokenize_set(tr, va, te)
 model = AutoModelForSequenceClassification.from_pretrained('prajjwal1/bert-tiny', num_labels=3)
-for param in model.bert.parameters():
-    param.requires_grad = False
+# for param in model.bert.parameters():
+#     param.requires_grad = False
 trained_model = train_transformer(model, train, val)
 gold, pred = predict_nn(trained_model, test)
 model_name += ['prajjwal1/bert-tiny']
@@ -131,4 +131,7 @@ f1_scores += [f1_score(gold, pred, average='macro')]
 # acc_scores += [accuracy_score(gold,pred)]
 # f1_scores+= [f1_score(gold,pred, average='macro')]
 #
+data = {'Model': model_name, 'Accuracy': acc_scores, 'Macro F1': f1_scores}
+df = pd.DataFrame(data)
+df.to_csv('reddit_results_frozen')
 
