@@ -72,6 +72,9 @@ def predict_nn(trained_model, tok_test_dataset):
 model_name = []
 acc_scores = []
 f1_scores = []
+set = []
+
+set_name=['reddit']
 
 tokenizer = BertTokenizer.from_pretrained('prajjwal1/bert-tiny')
 tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
@@ -84,54 +87,207 @@ gold, pred = predict_nn(trained_model, test)
 model_name += ['prajjwal1/bert-tiny']
 acc_scores += [accuracy_score(gold, pred)]
 f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
 
-
-# tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-# train, val, test = tokenize_set()
-# model = AutoModelForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=3)
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = AutoModelForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=3)
 # for param in model.bert.parameters():
 #     param.requires_grad = False
-# trained_model = train_transformer(model, train, val)
-# gold, pred = predict_nn(trained_model, test)
-# model_name += ['bert-base-uncased']
-# acc_scores += [accuracy_score(gold,pred)]
-# f1_scores+= [f1_score(gold,pred, average='macro')]
-#
-# tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
-# train, val, test = tokenize_set()
-# model = AutoModelForSequenceClassification.from_pretrained('bert-base-cased', num_labels=3)
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['bert-base-uncased']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = AutoModelForSequenceClassification.from_pretrained('bert-base-cased', num_labels=3)
 # for param in model.bert.parameters():
 #     param.requires_grad = False
-# trained_model = train_transformer(model, train, val)
-# gold, pred = predict_nn(trained_model, test)
-# model_name += ['bert-base-cased']
-# acc_scores += [accuracy_score(gold,pred)]
-# f1_scores+= [f1_score(gold,pred, average='macro')]
-#
-#
-# tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
-# train, val, test = tokenize_set()
-# model = RobertaForSequenceClassification.from_pretrained('roberta-base', num_labels=3)
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['bert-base-cased']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = RobertaForSequenceClassification.from_pretrained('roberta-base', num_labels=3)
 # for param in model.roberta.parameters():
 #     param.requires_grad = False
-# trained_model = train_transformer(model, train, val)
-# gold, pred = predict_nn(trained_model, test)
-# model_name += ['roberta-base']
-# acc_scores += [accuracy_score(gold,pred)]
-# f1_scores+= [f1_score(gold,pred, average='macro')]
-#
-# tokenizer = RobertaTokenizer.from_pretrained('roberta-large')
-# train, val, test = tokenize_set()
-# model = RobertaForSequenceClassification.from_pretrained('roberta-large', num_labels=3)
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['roberta-base']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = RobertaTokenizer.from_pretrained('roberta-large')
+tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = RobertaForSequenceClassification.from_pretrained('roberta-large', num_labels=3)
 # for param in model.roberta.parameters():
 #     param.requires_grad = False
-# trained_model = train_transformer(model, train, val)
-# gold, pred = predict_nn(trained_model, test)
-# model_name += ['roberta-large']
-# acc_scores += [accuracy_score(gold,pred)]
-# f1_scores+= [f1_score(gold,pred, average='macro')]
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['roberta-large']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
 #
-data = {'Model': model_name, 'Accuracy': acc_scores, 'Macro F1': f1_scores}
+tokenizer = BertTokenizer.from_pretrained('electra-base-discriminator')
+tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = ElectraForSequenceClassification.from_pretrained('electra-base-discriminator', num_labels=3)
+# for param in model.electra.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['electra-base-discriminator']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+#
+tokenizer = BertTokenizer.from_pretrained('electra-large-discriminator')
+tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = ElectraForSequenceClassification.from_pretrained('electra-large-discriminator', num_labels=3)
+# for param in model.electra.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['electra-large-discriminator']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = BertTokenizer.from_pretrained('electra-base-generator')
+tr, va, te = data_loader('reddit_set.csv', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = ElectraForSequenceClassification.from_pretrained('electra-base-generator', num_labels=3)
+# for param in model.electra.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['electra-base-generator']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+#
+#
+data = {'Model': model_name, 'Accuracy': acc_scores, 'Macro F1': f1_scores, 'Dataset:': set}
 df = pd.DataFrame(data)
 df.to_csv('reddit_results_frozen')
 
+
+set_name=['twitter']
+
+tokenizer = BertTokenizer.from_pretrained('prajjwal1/bert-tiny')
+tr, va, te = data_loader('all_tweets', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = AutoModelForSequenceClassification.from_pretrained('prajjwal1/bert-tiny', num_labels=3)
+# for param in model.bert.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['prajjwal1/bert-tiny']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+tr, va, te = data_loader('all_tweets', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = AutoModelForSequenceClassification.from_pretrained('bert-base-uncased', num_labels=3)
+# for param in model.bert.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['bert-base-uncased']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = BertTokenizer.from_pretrained('bert-base-cased')
+tr, va, te = data_loader('all_tweets', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = AutoModelForSequenceClassification.from_pretrained('bert-base-cased', num_labels=3)
+# for param in model.bert.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['bert-base-cased']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+tr, va, te = data_loader('all_tweets', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = RobertaForSequenceClassification.from_pretrained('roberta-base', num_labels=3)
+# for param in model.roberta.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['roberta-base']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = RobertaTokenizer.from_pretrained('roberta-large')
+tr, va, te = data_loader('all_tweets', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = RobertaForSequenceClassification.from_pretrained('roberta-large', num_labels=3)
+# for param in model.roberta.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['roberta-large']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+#
+tokenizer = BertTokenizer.from_pretrained('electra-base-discriminator')
+tr, va, te = data_loader('all_tweets', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = ElectraForSequenceClassification.from_pretrained('electra-base-discriminator', num_labels=3)
+# for param in model.electra.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['electra-base-discriminator']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+#
+tokenizer = BertTokenizer.from_pretrained('electra-large-discriminator')
+tr, va, te = data_loader('all_tweets', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = ElectraForSequenceClassification.from_pretrained('electra-large-discriminator', num_labels=3)
+# for param in model.electra.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['electra-large-discriminator']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
+
+tokenizer = BertTokenizer.from_pretrained('electra-base-generator')
+tr, va, te = data_loader('all_tweets', 0.3, (1/3))
+train, val, test = tokenize_set(tr, va, te)
+model = ElectraForSequenceClassification.from_pretrained('electra-base-generator', num_labels=3)
+# for param in model.electra.parameters():
+#     param.requires_grad = False
+trained_model = train_transformer(model, train, val)
+gold, pred = predict_nn(trained_model, test)
+model_name += ['electra-base-generator']
+acc_scores += [accuracy_score(gold, pred)]
+f1_scores += [f1_score(gold, pred, average='macro')]
+set += set_name
