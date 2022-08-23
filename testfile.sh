@@ -6,7 +6,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=0:02:0
-#SBATCH --mem=100M
+#SBATCH --mem=2GB
 
 cd "${SLURM_SUBMIT_DIR}"
 
