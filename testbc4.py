@@ -69,7 +69,8 @@ def predict_nn(trained_model, test_dataset):
 
 gold_labs, pred_labs = predict_nn(model, test_dataset)
 
-
-print("BERT-tiny on the John Hopkins Twitter dataset:")
-print(f'The accuracy score is {accuracy_score(pred_labs, gold_labs)}')
-print(f'The f1-score is {f1_score(pred_labs,gold_labs)}')
+df = pd.DataFrame([accuracy_score(pred_labs, gold_labs),f1_score(pred_labs,gold_labs)])
+df.to_csv('testcsv')
+# print("BERT-tiny on the John Hopkins Twitter dataset:")
+# print(f'The accuracy score is {accuracy_score(pred_labs, gold_labs)}')
+# print(f'The f1-score is {f1_score(pred_labs,gold_labs)}')
