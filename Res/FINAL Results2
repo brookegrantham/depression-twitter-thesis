@@ -1,0 +1,75 @@
+
+ROBERTA-BASE CONTINUED
+VALIDATION RESULTS
+MSL = 256 EPOCHS = 4
+              precision    recall  f1-score   support
+
+           0       0.65      0.70      0.67       298
+           1       0.73      0.68      0.70       410
+           2       0.57      0.59      0.58        75
+
+    accuracy                           0.68       783
+   macro avg       0.65      0.66      0.65       783
+weighted avg       0.68      0.68      0.68       783
+
+Accuracy Score:0.6781609195402298
+Recall Score:
+0.6781609195402298
+Precision Score:
+0.6810709878621477
+Weighted F1 Score:
+0.6787644004649058
+
+TEST SET RESULTS
+ROBERTA-BASE CONTINUED
+MSL = 256 EPOCHS = 6
+              precision    recall  f1-score   support
+
+           0       0.59      0.66      0.63       154
+           1       0.69      0.59      0.64       203
+           2       0.46      0.60      0.52        35
+
+    accuracy                           0.62       392
+   macro avg       0.58      0.62      0.59       392
+weighted avg       0.63      0.62      0.62       392
+
+Accuracy Score:0.6198979591836735
+Recall Score:0.6198979591836735
+Precision Score:0.6308771486349849
+Weighted F1 Score:0.6218036110674148
+
+TEST SET RESULTS
+ROBERTA-BASE 
+MSL = 256 EPOCHS = 6
+              precision    recall  f1-score   support
+
+           0       0.59      0.65      0.62       156
+           1       0.65      0.58      0.61       195
+           2       0.52      0.59      0.55        41
+
+    accuracy                           0.61       392
+   macro avg       0.59      0.60      0.59       392
+weighted avg       0.61      0.61      0.61       392
+
+Accuracy Score:0.6071428571428571
+Recall Score:0.6071428571428571
+Precision Score:0.6113109350640294
+Weighted F1 Score:0.6074611089179154
+
+VAL SET RESULTS
+ROBERTA-BASE 
+MSL = 256 EPOCHS = 6
+              precision    recall  f1-score   support
+
+           0       0.54      0.65      0.59       268
+           1       0.69      0.62      0.65       425
+           2       0.60      0.51      0.55        90
+
+    accuracy                           0.62       783
+   macro avg       0.61      0.59      0.60       783
+weighted avg       0.63      0.62      0.62       783
+
+Accuracy Score:0.6181353767560664
+Recall Score:0.6181353767560664
+Precision Score:0.6268304000342564
+Weighted F1 Score:0.6193686773892632
